@@ -1,0 +1,54 @@
+body  {
+  background: #1b1c1d;
+  color: #fff;
+}
+
+
+ .main {
+  margin-top: 7.0em;
+  font-size: 2em;
+  text-align: center;
+ }
+
+ .main .fa-film  {
+   font-size: 4em;
+ }
+
+#watch {
+   display: block;
+   color: white;
+   
+  
+ }
+
+ #watch:hover {
+  opacity: 0.5;
+ }
+
+form.ui {
+  width: 50%;
+  margin: 50px auto;
+}
+
+.main .form .field label {
+  color: white;
+}
+
+#flash {
+  margin-top: 8.0em;
+}
+
+.description p {
+  color:black;
+}
+
+#deleteform {
+  display: inline;
+}
+.extra {
+  margin-top: 7px;
+}
+
+.description, .video {
+  margin-top: 20px;
+}

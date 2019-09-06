@@ -1,0 +1,19 @@
+<% include layouts/top %>
+
+<div class="ui  main">
+    <form action="/login" method= "POST" class="ui form">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Username">
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Password">
+        </div>
+       
+        <button class="ui button" type="submit">Submit</button>
+      </form>
+
+</div>
+
+<% include layouts/bottom %>

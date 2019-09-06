@@ -1,0 +1,35 @@
+<% include ../layouts/top %>
+
+<div class="ui  main">
+    <form action="/movies" method= "POST" class="ui form">
+        <div class="field">
+          <label>Title</label>
+          <input type="text" name="movie[title]" placeholder="Title">
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea name="movie[description]"></textarea>
+        </div>
+        <div class="field">
+          <label>Link 1 </label>
+          <input type="text" name="movie[links]" placeholder="Links">
+        </div>
+         <div class="field">
+          <label>Link 2 </label>
+          <input type="text" name="movie[links]" placeholder="Links">
+        </div>
+         <div class="field">
+          <label>Link 3 </label>
+          <input type="text" name="movie[links]" placeholder="Links">
+        </div>
+        <div class="field">
+          <label>Image</label>
+          <input type="text" name="movie[image]" placeholder="imageurl">
+        </div>
+       
+        <button class="ui button" type="submit">Submit</button>
+      </form>
+
+</div>
+
+<% include ../layouts/bottom %>

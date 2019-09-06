@@ -1,0 +1,32 @@
+<% include ../layouts/top %>
+
+<div class="ui  main">
+    <form action="/movies/<%=movie._id%>?_method=PUT" method= "POST" class="ui form">
+        <div class="field">
+          <label>Title</label>
+          <input type="text" name="movie[title]" value="<%=movie.title%>">
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea name="movie[description]"><%=movie.description%></textarea>
+        </div>
+        <%movie.links.forEach(function(link){%>
+        <div class="field">
+          <label>Link <%=movie.links.indexOf(link)+1%></label>
+          <input type="text" name="movie[links]" value="<%=movie.links%>">
+        </div> 
+        <%})%>
+        <label> Add another Link</label>
+          <input type="text" name="movie[links]" placeholder="your link">
+        
+        <div class="field">
+          <label>Image</label>
+          <input type="text" name="movie[image]" value="<%=movie.image%>">
+        </div>
+       
+        <button class="ui button" type="submit">Submit</button>
+      </form>
+
+</div>
+
+<% include ../layouts/bottom %>

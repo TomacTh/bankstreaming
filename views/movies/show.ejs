@@ -1,0 +1,25 @@
+<% include ../layouts/top %>
+
+
+  <div class="ui text main container segment">
+    <div class="ui huge header"><%=movie.title%></div>
+    <div class="ui top attached ">
+      <div class="item">
+        <img class="ui centered rounded image" src="<%= movie.image%>" > 
+        <div class="description">
+          <p><%=movie.description%></p>
+        </div> 
+        <%movie.links.forEach(function(link) { %>
+          <div class="ui video">
+              <%- link%>
+          </div> 
+        <% }) %>
+       
+        
+      </div> 
+    </div>
+  </div>
+
+
+
+<% include ../layouts/bottom %>

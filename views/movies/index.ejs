@@ -1,0 +1,62 @@
+<% include  ../layouts/top %>
+
+<div class="ui main grid container">
+    <% movies.forEach(function(movie){ %>
+      <div class="four wide column">
+        <div class="ui segment">
+            <div class = "item">
+               
+                    <img  class= "ui rounded image" src="<%= movie.image%>" >
+                
+                <div class="content">
+                    <a  href="/movies/<%=movie._id%>" class="header"> <%= movie.title %> <a>
+                    
+                    <div class="description">
+                        <p> <%- movie.description.substring(0, 100)%>...</p>
+                    </div>
+                    <div class="extra">
+                        <a class = "ui floated basic  black button" href="/movies/<%=movie._id%>">
+                          Watch
+                          <i class= "right chevron icon"></i>
+                        </a>
+                        <div class="extra">
+                          <a class = "ui floated basic  orange button" href="/movies/<%=movie._id%>/edit">
+                            Edit
+                            <i class= "right chevron icon"></i>
+                          </a>
+                          <form  id="deleteform" action="/movies/<%= movie._id%>?_method=DELETE" method="POST">
+                            <button class ="ui floated basic red  button">Delete</button>
+                          </form>
+                        </div>
+                    </div>
+                  
+            </div>
+        
+        </div>
+
+            
+
+          </div>
+
+      </div>
+    
+    <% })%>
+
+</div>
+
+
+<% include ../layouts/bottom %>
+
+<script>
+    
+      $(".button").mouseenter(function (){
+      $(this).removeClass("basic");
+      $(this).addClass("inverted");
+      });
+    
+      $(".button").mouseleave(function (){
+      $(this).removeClass("inverted");
+      $(this).addClass("basic");
+      });
+   
+    </script>
