@@ -6,7 +6,10 @@ var middleware = require("../middleware");
 
 
 //=============================NEW========================================================
+
+
 router.get("/new", middleware.isLoggedIn, function(req,res){
+  
   res.render("movies/new");
   })
 
@@ -14,6 +17,8 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
 
 
 router.post("/", middleware.isLoggedIn, function(req,res){
+  req.body.movie.links = links(req.body.movie.links)
+
   Movie.create(req.body.movie, function(err,newMovie){
     if(err){
         res.render("new");
@@ -77,12 +82,18 @@ router.get("/:id/edit",middleware.isLoggedIn,  function(req,res){
 // UPDATE CAMPGROUND ROUTE
 router.put("/:id", middleware.isLoggedIn, function(req, res){
   
+    
   
+  
+    req.body.movie.links = links(req.body.movie.links)
+    
+
     Movie.findOneAndUpdate(req.params.id, req.body.movie, function(err, movie){
         if(err){
             req.flash("error", err.message);
             res.redirect("back");
         } else {
+            
             req.flash("success","Successfully Updated!");
             res.redirect("/movies/" + movie._id);
         }
@@ -100,6 +111,16 @@ router.delete("/:id",middleware.isLoggedIn,  function(req,res){
     } 
   })
 })
+
+
+
+
+
+const links = (arr) => arr.filter((el,i) => {
+  return el !== "" && arr.indexOf(el) === i 
+})
+
+
 
 
 

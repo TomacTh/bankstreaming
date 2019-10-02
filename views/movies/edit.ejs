@@ -10,10 +10,10 @@
           <label>Description</label>
           <textarea name="movie[description]"><%=movie.description%></textarea>
         </div>
-        <%movie.links.forEach(function(link){%>
+        <%movie.links.forEach(function(link,i){%>
         <div class="field">
-          <label>Link <%=movie.links.indexOf(link)+1%></label>
-          <input type="text" name="movie[links]" value="<%=movie.links%>">
+          <label>Link <%=i + 1%></label>
+          <input type="text" name="movie[links]" value="<%=movie.links[i]%>">
         </div> 
         <%})%>
         <label> Add another Link</label>

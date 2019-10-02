@@ -1,6 +1,8 @@
 body  {
   background: #1b1c1d;
   color: #fff;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -51,4 +53,13 @@ form.ui {
 
 .description, .video {
   margin-top: 20px;
+}
+
+
+.background {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
