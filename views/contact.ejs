@@ -1,0 +1,30 @@
+<% include layouts/top %>
+
+<div class="ui inverted segment">
+    <form action="/contact" method="POST" class="ui inverted form">
+      <div class="two fields">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input placeholder=" Name" name="message[name]" type="text">
+          </div>
+          
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="envelope icon"></i>
+            <input placeholder="Email" name="message[email]" type="text">
+          </div>
+         
+        </div>
+      </div>
+      
+      <div class="field">
+        <div class="ui left icon input">
+          <textarea name="message[text]"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="ui submit button"><i class="paper plane icon"></i>Send</button>
+    </form>
+  </div>
+<% include layouts/bottom %>

@@ -5,17 +5,35 @@ var mongoose = require("mongoose");
 
 
 var movieSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  image: String,
-  links: Array,
+  title: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String,
+    required: true
+  },
+  links: [
+    Array,
+    Array
+  ],
   author: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
     },
     username: String
-  }
+  },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ]
 });
 
 

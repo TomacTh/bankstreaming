@@ -1,8 +1,25 @@
+html {
+  height: 100%;
+}
+
 body  {
   background: #1b1c1d;
   color: #fff;
   margin: 0;
   padding: 0;
+  font-family: Roboto;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+
+.inverted.fixed.menu {
+  font-family: Montserrat;
+}
+
+.ui.main.container.segment {
+  font-family: Roboto;
 }
 
 
@@ -44,6 +61,12 @@ form.ui {
   color:black;
 }
 
+.description {
+  margin-top: 0;
+  padding-top: 1.1rem;
+
+}
+
 #deleteform {
   display: inline;
 }
@@ -51,15 +74,142 @@ form.ui {
   margin-top: 7px;
 }
 
-.description, .video {
-  margin-top: 20px;
+.show , .video {
+  margin-top: 50px;
+}
+
+.video.link {
+  padding-top: 3.2rem;
+  padding-bottom: 3rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+hr {
+  border: 0.5px dashed #1b1c1d;
+  width: 100%;
+ 
+}
+
+hr:first-of-type {
+  display: none;
+}
+span {
+  color: #FFFFFF;
+  font-family: Roboto;
+}
+
+.header {
+  background: #1b1c1d;
+  border-radius: 5px;
 }
 
 
-.background {
+
+div .main {
   position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  z-index: 0;
+  left: 50%;
+  margin-left: -250px;
+  opacity: 0.8;
+  
 }
+
+.title {
+  padding: 65px 10px ;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+
+.movietitle {
+  color: #1b1c1d;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.movietitle:hover {
+  color: coral;
+}
+
+.content {
+  padding-top: 10px;
+}
+
+.linksLang {
+  font-family: Mansalva;
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+
+.buttons {
+  padding-top: 2rem;
+}
+
+#message{
+  margin-bottom: 2rem;
+}
+
+label {
+  font-weight: 700;
+}
+
+
+
+#particles-js .main a   {
+  font-size: 10rem;
+  font-family: 'Mansalva';
+  color: #1b1c1d;
+}
+
+
+
+.ui.centered.rounded.image  {
+  margin-top: 2rem;
+}
+
+#movieComment{
+  margin: 0 auto;
+  padding-top: 5rem;
+  width: 50%;
+}
+
+#movieComment h3 {
+  font-size: 2.5rem;
+  font-family: 'Mansalva';
+  color: #FFFFFF;
+
+}
+
+form.tiny {
+  float: left;
+}
+
+.deleteUpdate {
+  float: right;
+}
+.deleteUpdate form {
+  display: inline;
+}
+
+.date {
+  font-style: italic;
+  font-weight: 200;
+}
+
+a.author {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.segment {
+  font-family: Montserrat;
+  font-weight: bold;
+  position: fixed;
+  bottom: 0;
+}
+
+.site-content {
+  flex: 1;
+}
+
+

@@ -1,7 +1,9 @@
-var express = require("express");
-var router = express.Router();
-var passport = require("passport")
-var User = require("../models/user")
+const express = require("express");
+const router = express.Router();
+const passport = require("passport")
+const User = require("../models/user")
+const {sendContactEmail, sendRegisterEmail} = require("../email/email")
+
 
 
 //=========ROOT PAGE===================================
@@ -19,14 +21,15 @@ router.get("/register", function(req,res){
 
 //=====================POST THE FORM, CREATE A NEW USER, LOGIN==========================================
 router.post("/register", function(req,res){
-  var newUser = new User({username: req.body.username});
+  var newUser = new User({username: req.body.username, email: req.body.email});
   User.register(newUser,req.body.password, function(err, user){
     if(err){
       console.log(err);
       return res.render("register", {error: err.message});
     } 
+    sendRegisterEmail(req.body.username, req.body.email);
     passport.authenticate("local")(req,res, function(){
-      req.flash("success", "Welcome to Bankstreaming"+ user.username);
+      req.flash("success", "Welcome to Bankstreaming "+ user.username);
       res.redirect("/");
     });
   });
@@ -44,14 +47,27 @@ router.post("/login",passport.authenticate("local",
   successRedirect: "/", 
   failureRedirect: "/login" 
   
-  }),  function(req,res){
+  }),  (req,res) => {
     req.flash("success",  user.username + "login");
 });
 
 //===================LOGOUT===
-router.get("/logout",function(req,res){
+router.get("/logout",(req,res) => {
   req.logout();
   req.flash("error", "Logged you out!")
+  res.redirect("/")
+})
+
+//=================CONTACT=============
+router.get("/contact", (req,res) => {
+  res.render("contact")
+})
+
+//========CONTACT POST==================
+
+router.post("/contact", (req,res) => {
+  sendContactEmail(req.body.message);
+  req.flash("success", "Mail sent")
   res.redirect("/")
 })
 

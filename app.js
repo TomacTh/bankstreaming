@@ -1,4 +1,4 @@
-var express = require("express"),
+const express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
     mongoose = require("mongoose"),
@@ -7,21 +7,22 @@ var express = require("express"),
     LocalStrategy = require("passport-local"),
     User = require("./models/user"),
     Movie = require("./models/movie"),
-    methodOverride = require("method-override");
+    methodOverride = require("method-override"),
+    ejsLint = require('ejs-lint');
 
 
 //===========REQUIRE ROUTES================================
-var indexRoutes = require("./routes/index");
-var moviesRoutes = require("./routes/movies");
+const indexRoutes = require("./routes/index");
+const moviesRoutes = require("./routes/movies");
+const commentRoutes = require("./routes/comment")
    
     
 
 
-mongoose.connect("mongodb://localhost/thomas",{ useNewUrlParser: true } )
+mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser: true,  useCreateIndex: true, useFindAndModify: false} )
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static(__dirname+ "/public"));
-app.use(express.static(__dirname+ "/node-modules"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
@@ -52,11 +53,12 @@ app.use(function(req,res,next){
 
 app.use("/", indexRoutes);
 app.use("/movies",moviesRoutes);
+app.use("/movies/:id/comments", commentRoutes);
 
 
 
 //)========================================================================================
-var port = 3000;
+var port =  process.env.PORT;
 app.listen(port, function(){
   console.log("SERVER HAS STARTED");
 })

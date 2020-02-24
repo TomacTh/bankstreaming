@@ -13,14 +13,34 @@
         <div class="field">
           <label>Link 1 </label>
           <input type="text" name="movie[links]" placeholder="Links">
+          <select class="ui dropdown" onchange="langFunction()" >
+            <option value="0">vf</option>
+            <option value="1">vostfr</option>
+          </select>
         </div>
          <div class="field">
           <label>Link 2 </label>
           <input type="text" name="movie[links]" placeholder="Links">
+          <select class="ui dropdown" onchange="langFunction()">
+              <option value="0">vf</option>
+              <option value="1">vostfr</option>
+          </select>
         </div>
          <div class="field">
           <label>Link 3 </label>
           <input type="text" name="movie[links]" placeholder="Links">
+          <select class="ui dropdown" onchange="langFunction()">
+              <option value="0">vf</option>
+              <option value="1">vostfr</option>
+          </select>
+        </div> 
+        <div class="field">
+          <label>Link  4 </label>
+          <input type="text" name="movie[links]" placeholder="Links">
+          <select class="ui dropdown" onchange="langFunction()">
+              <option value="0">vf</option>
+              <option value="1">vostfr</option>
+          </select>
         </div>
         <div class="field">
           <label>Image</label>
@@ -31,5 +51,26 @@
       </form>
 
 </div>
+<script>
+
+const langFunction = () => {
+  let langs = document.querySelectorAll('select')
+  langs = Array.from(langs)
+
+  langs.forEach( (el) => {
+    if(el.value == "0" ){
+        el.previousElementSibling.setAttribute('name', 'movie[links][0]')
+    } else if (el.value =="1") {
+        el.previousElementSibling.setAttribute('name', 'movie[links][1]' )
+    }
+  })
+}
+
+langFunction();
+
+  
+
+
+</script>
 
 <% include ../layouts/bottom %>

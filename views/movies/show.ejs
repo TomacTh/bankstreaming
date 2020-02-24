@@ -2,24 +2,131 @@
 
 
   <div class="ui text main container segment">
-    <div class="ui huge header"><%=movie.title%></div>
+    <div class="ui huge header"><span><%=movie.title%></span></div>
     <div class="ui top attached ">
       <div class="item">
         <img class="ui centered rounded image" src="<%= movie.image%>" > 
-        <div class="description">
+        <div class="description show">
           <p><%=movie.description%></p>
+        </div>
+        <div class="ui buttons">
+          <button class="ui button bvo">vo</button>
+          <div class="or" data-text="ou"></div>
+          <button class="ui button bvf">vf</button>
         </div> 
-        <%movie.links.forEach(function(link) { %>
-          <div class="ui video">
-              <%- link%>
-          </div> 
-        <% }) %>
-       
-        
+        <div class='vf'>
+        <% if (movie.links[0] !==  null && movie.links[0] !== undefined && movie.links[0] ) {%>
+          <%movie.links[0].forEach(function(link) { %>
+            <hr>
+            <div class="ui video link">
+                <%-link%>
+            </div> 
+          <% }) %>
+        <% } %> 
+      </div>    
+      <div class='vostfr'>
+        <% if (movie.links[1] !==  null && movie.links[1] !== undefined && movie.links[1] ) {%>
+          <%movie.links[1].forEach(function(link) { %>
+            <hr>
+            <div class="ui video link">
+                <%-link%>
+            </div> 
+          <% }) %>
+        <% } %> 
+      </div>
       </div> 
     </div>
   </div>
+  <div class=" ui inverted segment" id="movieComment">
+    <div class="ui minimal  comments">
+      <h3 class="ui dividing header">Comments <i class="far fa-comments"></i></h3>
+      <%movie.comments.forEach((comment) => {%>
+        <div class="comment">
+            <a class="avatar">
+            </a>
+        </div>
+        <div class="content">
+            <% if( currentUser && comment.author.id.equals(currentUser._id)) { %>
+              <div onmouseleave="updateComment.style.display = 'none'" class="deleteUpdate">
+                  <form onmouseover="updateComment.style.display = 'inline'"   action= "/movies/<%=movie._id%>/comments/<%=comment.id%>?_method=PUT" method="POST">
+                    <button  class= "ui mini yellow button"><i class="far fa-edit"></i></button>
+                    <textarea id="updateComment" rows="2" name="comment[text]"><%=comment.text%></textarea>
+                  </form>
+                  <form  action= "/movies/<%=movie._id%>/comments/<%=comment.id%>?_method=DELETE" method="POST">
+                    <button  type="submit" class= "ui mini red button"><i class="far fa-trash-alt"></i></button>
+                  </form>
+              </div>
+            <% } %>
+            <a class="author"><%=comment.author.username%></a>
+            <p class="date"><%=comment.createdAt%></p>
+            <div class="text">
+              <%=comment.text%>
+            </div>
+        </div>
+      <%})%>
+      <form class="ui  form tiny"  method="POST" action="/movies/<%=movie._id%>/comments">
+        <div class="field">
+          <textarea  rows="2" name="comment[text]"></textarea>
+        </div>
+       
+          <button  type="submit" class=" ui positive button">
+            <i class="far fa-comment"> </i>
+            Add a comment
+          </button> 
+        </div>
+      </form>
+      
+  </div>
+   
+  
+  
+
+    
+
+<script> 
 
 
+  const vf = document.querySelector('.vf')
+  const vostfr = document.querySelector('.vostfr')
+  
+  const bvf = document.querySelector('.bvf')
+  const bvost = document.querySelector('.bvo')
+  
+  bvf.classList.add('active')
+  
+  vostfr.style.display = "none";
+
+  document.querySelector('.buttons').addEventListener('click', e => {
+
+    
+    if (e.target.matches('.bvo')){
+        bvf.classList.remove('active');
+        vostfr.style.display = "contents";
+        vf.style.display = "none";
+    } else if (e.target.matches('.bvf')){
+        vf.style.display = "contents";
+        vostfr.style.display = "none";
+    }
+  })
+
+  const links = document.querySelectorAll('iframe');
+
+  Array.from(links).forEach( (el) =>{
+    el.setAttribute('width', '660'); 
+  });
+
+  const dates = document.querySelectorAll('.date')
+  Array.from(dates).forEach( (el => {
+    const date = el.textContent
+    const newdate = date.split('GMT')
+    el.textContent = newdate[0]
+  }))
+
+  const updateBtn = document.querySelector('.yellow.button')
+  const updateComment = document.getElementById('updateComment')
+  
+  updateComment.style.display = 'none';
+
+</script>
 
 <% include ../layouts/bottom %>

@@ -3,15 +3,28 @@
 <div class="ui  main">
     <form action="/register" method= "POST" class="ui form">
         <div class="field">
-          <label>Username</label>
-          <input type="text" name="username" placeholder="Username">
+          <div class= "ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="Username">
+          </div>
         </div>
+        
         <div class="field">
-          <label>Password</label>
-          <input type="password" name="password" placeholder="Password">
+          <div class="ui left icon input">
+            <i class="envelope icon"></i>
+            <input type="text" name="email" placeholder="Email">
+          </div>
+        
+        </div>
+        
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password">
+          </div>
         </div>
        
-        <button class="ui button" type="submit">Submit</button>
+        <button class="ui button" type="submit"><i class="plus icon"></i>Submit</button>
       </form>
 
 </div>

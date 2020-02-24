@@ -10,14 +10,30 @@
           <label>Description</label>
           <textarea name="movie[description]"><%=movie.description%></textarea>
         </div>
-        <%movie.links.forEach(function(link,i){%>
-        <div class="field">
-          <label>Link <%=i + 1%></label>
-          <input type="text" name="movie[links]" value="<%=movie.links[i]%>">
-        </div> 
-        <%})%>
+        
+        <p class='linksLang'>vf links</p>
+         <% if (movie.links[0] !==  null && movie.links[0] !== undefined && movie.links[0] ) {%>
+          <%movie.links[0].forEach(function(link,i){%>
+          <div class="field">
+            <label>Link <%=i + 1%></label>
+            <input type="text" name="movie[links][0]" value="<%=link%>">
+          </div> 
+          <%})%>
+        <% } %> 
         <label> Add another Link</label>
-          <input type="text" name="movie[links]" placeholder="your link">
+        <input type="text" name="movie[links][0]" placeholder="your link">
+        
+        <p class='linksLang'>vostfr links</p>
+        <% if (movie.links[1] !==  null && movie.links[1] !== undefined && movie.links[1] ) {%>
+          <%movie.links[1].forEach(function(link,i){%>
+          <div class="field">
+            <label>Link <%=i + 1%></label>
+            <input type="text" name="movie[links][1]" value="<%=link%>">
+          </div> 
+          <%})%>
+        <% } %>
+        <label> Add another Link</label>
+        <input type="text" name="movie[links][1]" placeholder="your link">
         
         <div class="field">
           <label>Image</label>
