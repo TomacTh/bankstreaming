@@ -1,23 +1,21 @@
 const nodemailer = require('nodemailer')
-const xoauth2 = require('xoauth2')
+
 
  
 
-const smtpTransport = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-      type: 'OAuth2',
-      user: `${process.env.EMAIL}`,
-      clientId: `${process.env.ID}`,
-      clientSecret: `${process.env.SECRET}`,
-      if(refreshToken){
-        refreshToken: `${process.env.REFRESH_TOKEN}`
-      },
-      accessToken: `${process.env.ACCESS_TOKEN}`
-  }
-});
+   const smtpTransport = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+          type: 'OAuth2',
+          user: `${process.env.EMAIL}`,
+          clientId: `${process.env.ID}`,
+          clientSecret: `${process.env.SECRET}`,
+          refreshToken: `${process.env.REFRESH_TOKEN}`,
+          accessToken: `${process.env.ACCESS_TOKEN}`
+      }
+  });
 
 
 const sendContactEmail = (message) => {
