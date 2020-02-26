@@ -19,30 +19,24 @@
                           <i class= "right chevron icon"></i>
                         </a>
                         <% if (currentUser.admin){ %>
-                        <div class="extra">
-                          <a class = "ui floated basic  orange button" href="/movies/<%=movie._id%>/edit">
-                            Edit
-                            <i class= "right chevron icon"></i>
-                          </a>
-                          <form  id="deleteform" action="/movies/<%= movie._id%>?_method=DELETE" method="POST">
-                            <button class ="ui floated basic red  button">Delete</button>
-                          </form>
-                          <%}%>
-                        </div>
+                          <div class="extra">
+                            <a class = "ui floated basic  orange button" href="/movies/<%=movie._id%>/edit">
+                              Edit
+                              <i class= "right chevron icon"></i>
+                            </a>
+                            <form  id="deleteform" action="/movies/<%= movie._id%>?_method=DELETE" method="POST">
+                              <button class ="ui floated basic red  button">Delete</button>
+                            </form>
+                          </div>
+                        <%}%>
+                        
+      
                     </div>
-                  
+                </div>
             </div>
-        
         </div>
-
-            
-
-          </div>
-
       </div>
-    
     <% })%>
-
 </div>
 
 
