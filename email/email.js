@@ -1,11 +1,29 @@
 const nodemailer = require('nodemailer')
+const xoauth2 = require('xoauth2')
 
  
- const sendContactEmail = (message) => {
+
+const smtpTransport = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+      type: 'OAuth2',
+      user: `${process.env.EMAIL}`,
+      clientId: `${process.env.ID}`,
+      clientSecret: `${process.env.SECRET}`,
+      if(refreshToken){
+        refreshToken: `${process.env.REFRESH_TOKEN}`
+      },
+      accessToken: `${process.env.ACCESS_TOKEN}`
+  }
+});
+
+
+const sendContactEmail = (message) => {
     
-    const smtpTransport = nodemailer.createTransport(`smtps://${process.env.EMAIL}:`+encodeURIComponent(process.env.PASSWORD_EMAIL) + "@smtp.gmail.com:465"); 
 
-
+ 
   
     
     var mail = {
@@ -29,8 +47,6 @@ const nodemailer = require('nodemailer')
 
 const sendRegisterEmail = (username, email) => {
     
-  const smtpTransport = nodemailer.createTransport(`smtps://${process.env.EMAIL}:`+encodeURIComponent(process.env.PASSWORD_EMAIL) + "@smtp.gmail.com:465"); 
-
 
 
   
