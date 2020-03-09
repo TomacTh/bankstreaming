@@ -87,7 +87,10 @@ router.put("/:id", [middleware.isLoggedIn, middleware.isAdmin], async (req, res)
     req.body.movie.links[1] = updateAvoidBugLinks(req.body.movie.links[1]);
     
     try {
-        const movie = await Movie.findOneAndUpdate(req.params.id, req.body.movie);
+        console.log(req.params.id)
+        const movie = await Movie.findById(req.params.id)
+        await movie.update(req.body.movie)
+        console.log(movie)
         req.flash("success","Successfully Updated!");
         res.redirect("/movies/" + movie._id);
     } catch(e) {

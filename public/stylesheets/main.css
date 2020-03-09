@@ -212,4 +212,9 @@ a.author {
   flex: 1;
 }
 
+@media screen and (max-width: 640px) {
+  iframe {
+    width: 350px;
+  }
+}
 
