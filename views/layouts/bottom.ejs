@@ -12,5 +12,22 @@ crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $('.hamburger').click(function(e){
+        $menu = $(this).parent();
+        if(!$(this).hasClass('active')) {
+          $(this).addClass('active');
+          $menu.addClass('open');
+        } else {
+          $(this).removeClass('active');
+          $menu.removeClass('open');
+        }
+        e.preventDefault();
+      });
+    })
+</script>
+
 </body>
 </html>

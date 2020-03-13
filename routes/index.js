@@ -44,12 +44,12 @@ router.get("/login",function(req,res){
 
 router.post("/login",passport.authenticate("local", 
   {
-  successRedirect: "/", 
-  failureRedirect: "/login" 
-  
-  }),  (req,res) => {
-    req.flash("success",  user.username + "login");
-});
+  successRedirect: '/movies', 
+  failureRedirect: '/login',
+  failureFlash: true,
+  successFlash: true
+  })
+);
 
 //===================LOGOUT===
 router.get("/logout",(req,res) => {

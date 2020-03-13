@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Bankstreaming</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <meta name="viewport" content="width=device-width, maximum-scale=2, user-scalable=yes">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" media="all">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
   <body>
   
   <main class="site-content">
-    <div class="ui fixed inverted menu">
-      <a class="item" href="/">
+    <!-- <div class="ui fixed  stackable inverted menu">
+      <a class="item header" href="/">
         <i class="home icon"></i>
         Home
       </a>
@@ -36,16 +36,7 @@
       </a>
       <% } %>
       <div class="right menu">
-        <div class="item">
-          <form action="/movies" method="GET">
-              <div class="ui icon input">
-                  <input name="search" type="text" placeholder="Search...">
-                  <i class="search link icon" value="Search" type="submit"></i>
-                </div>
-
-          </form>
-          
-        </div>
+        
         <% if(!currentUser){ %>
         <a  href="/register" class="ui item">
           Sign up
@@ -61,8 +52,78 @@
           Logout
         </a>
         <% } %>
+        <div class="item">
+          <form action="/movies" method="GET">
+              <div class="ui icon input">
+                  <input name="search" type="text" placeholder="Search...">
+                  <i class="search link icon" value="Search" type="submit"></i>
+                </div>
+
+          </form>
+          
+        </div>
+        <div class="hamburger ">
+          <span class="hamburger-bun"></span>
+          <span class="hamburger-patty"></span>
+          <span class="hamburger-bun"></span>
+      </div>
       </div>
     </div>
+       -->
+       <div class="ui fixed  inverted menu stackable">
+        <a class="item header" href="/">
+          <i class="home icon"></i>
+          Home
+        </a>
+        <a class="item" href="/movies">
+          <i class="video  icon"></i>
+          Movies
+        </a>   
+        <a class="item" href="/contact">
+          <i class="envelope icon"></i>
+          Contact
+        </a>  
+        <% if(currentUser && currentUser.admin) { %>
+        <a class="item" href="/movies/new">
+          <i class="add  icon"></i>
+          Add
+        </a>
+        <% } %>
+        <div class="right menu">
+          <% if(!currentUser){ %>
+            <a  href="/register" class="ui item">
+              Sign up
+            </a> 
+            <a href="/login" class="ui item">
+              Login
+            </a> 
+            <% } else { %>
+            <a class="ui item">
+              <%=currentUser.username%>
+            </a> 
+            <a href="/logout" class="ui item">
+              Logout
+            </a>
+         
+            <% } %>
+            <div class="item">
+              <form action="/movies" method="GET">
+                  <div class="ui icon input">
+                      <input name="search" type="text" placeholder="Search...">
+                      <i class="search link icon" value="Search" type="submit"></i>
+                    </div>
+    
+              </form>
+            </div>
+            
+         
+        </div>
+        <div class="hamburger ">
+            <span class="hamburger-bun"></span>
+            <span class="hamburger-patty"></span>
+            <span class="hamburger-bun"></span>
+        </div>
+      </div>
       
       <div id= "flash" class="container">
         <% if(error&& error.length>0) {%>
@@ -76,3 +137,4 @@
           </div>
         <% } %>
       </div>
+
