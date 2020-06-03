@@ -61,9 +61,13 @@ form.ui {
   color:black;
 }
 
+.movietitle {
+  font-size: 1.5rem;
+}
 .description {
   margin-top: 0;
   padding-top: 1.1rem;
+  font-weight: 200;
 
 }
 

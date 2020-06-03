@@ -8,7 +8,7 @@
                 <a href="/movies/<%=movie._id%>"><img  class= "ui rounded image" src="<%= movie.image%>" ></a>
                 
                 <div class="content">
-                    <a  class='movietitle' href="/movies/<%=movie._id%>" class="header"> <%= movie.title %> <a>
+                    <a  class='movietitle' href="/movies/<%=movie._id%>" class="header"> <%= movie.title %> </a>
                     
                     <div class="description">
                         <p> <%- movie.description.substring(0, 100)%>...</p>
